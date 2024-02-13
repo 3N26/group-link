@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        body {
+            padding: 8px;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+                sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+        }
+
+        label {
+            color: rgba(0, 0, 0, 0.88);
+        }
+
+        input {
+            box-sizing: border-box;
+            margin: 4px 0 8px 0;
+            padding: 0px 7px;
+            border-radius: 4px;
+            color: rgba(0, 0, 0, 0.88);
+            font-size: 12px;
+            line-height: 1.5714285714285714;
+            list-style: none;
+            position: relative;
+            min-width: 0;
+            background-color: #ffffff;
+            background-image: none;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #d9d9d9;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .checkbox {
+            display: inline-block;
+            margin: 3px 3px 3px 0;
+            cursor: pointer;
+        }
+
+        .line {
+            display: flex;
+            align-items: center;
+            margin-top: 4px;
+        }
+
+        #moreBtn {
+            display: none;
+            cursor: pointer;
+            font-size: 11px;
+            color: rgba(0, 0, 0, 0.45);
+            margin-left: 2px;
+        }
+
+        #form:hover #moreBtn {
+            display: block;
+        }
+    </style>
+    <script type="module" crossorigin src="/popup/index.js"></script>
+</head>
+
+<body>
+    <form id="form">
+        <div>
+            <label for="tabPoolCount">Tab Pool Count</label>
+            <input type="number" id="tabPoolCount" min="0" placeholder="Set pool count">
+        </div>
+        <div>
+            <label for="nextTabShortcut">Next Tab Shortcut</label>
+            <input type="text" id="nextTabShortcut" placeholder="Set shortcut combo">
+        </div>
+        <div id="moreBtn">More ></div>
+        <div id="moreOptions" style="height: 0;overflow: hidden;">
+            <div class="line">
+                <input class="checkbox" type="checkbox" id="limitToggle">
+                <label for="tabLimit">Limit Open Tab</label>
+            </div>
+            <input style="display: none;" type="number" id="tabLimit" min="0" placeholder="Set limit count">
+            <div class="line">
+                <input class="checkbox" type="checkbox" id="cacheToggle">
+                <label for="cacheToggle">Store Locally</label>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
