@@ -8,7 +8,8 @@ function querySimilarElements<T extends HTMLElement>(dom: T) {
     cur = cur.parentElement;
   }
   if (queryArr.length === 0) return [];
-  return document.querySelectorAll<T>(queryArr.join(' '));
+  const selector = queryArr.join(' ');
+  return document.querySelectorAll<T>(selector.replace(/(:|\[|\]|,|=|@)/g, '\\$1'));
 }
 
 function filterMap<T, K>(array: ArrayLike<T>, callback: (item: T) => K) {
