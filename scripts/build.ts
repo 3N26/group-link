@@ -29,8 +29,8 @@ async function buildMainfest() {
   //   Bun.file(join(assetsDir, 'icon-34.png'))
   // );
   await Bun.write(
-    join(outputDir, 'icon-128.png'),
-    Bun.file(join(assetsDir, 'icon-128.png'))
+    join(outputDir, 'icon.png'),
+    Bun.file(join(assetsDir, 'icon.png'))
   );
   await Bun.write(
     join(outputDir, 'popup', 'index.html'),

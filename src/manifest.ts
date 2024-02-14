@@ -15,14 +15,14 @@ const manifest: chrome.runtime.ManifestV3 = {
   },
   action: {
     default_popup: 'popup/index.html',
-    default_icon: 'icon-128.png',
+    default_icon: 'icon.png',
   },
   // chrome_url_overrides: {
   //   newtab: "pages/newtab/index.html",
   // },
   permissions: ['tabs', 'tabGroups', 'activeTab', 'history', 'storage', 'contextMenus'],
   icons: {
-    '128': 'icon-128.png',
+    '128': 'icon.png',
   },
   content_scripts: [
     {
@@ -34,7 +34,7 @@ const manifest: chrome.runtime.ManifestV3 = {
   ],
   web_accessible_resources: [
     {
-      resources: ['assets/js/*.js', 'assets/css/*.css', 'icon-128.png'],
+      resources: ['assets/js/*.js', 'assets/css/*.css', 'icon.png'],
       matches: ['*://*/*'],
     },
   ],
