@@ -6,12 +6,14 @@ import { isHitKeyboardCombo, isHitMouseCombo } from '@src/utils/combo';
 window.addEventListener(
   'keydown',
   (e) => {
-    getConfig().then(({ nextLinkHotKey }) => {
-      if (isHitKeyboardCombo(nextLinkHotKey, e)) {
-        e.preventDefault();
-        invoke(Background.goForward);
-      }
-    });
+    getConfig()
+      .then(({ nextLinkHotKey }) => {
+        if (isHitKeyboardCombo(nextLinkHotKey, e)) {
+          e.preventDefault();
+          invoke(Background.goForward);
+        }
+      })
+      .catch();
   },
   { passive: true, capture: true }
 );
@@ -19,12 +21,14 @@ window.addEventListener(
 window.addEventListener(
   'mousedown',
   (e) => {
-    getConfig().then(({ nextLinkHotKey }) => {
-      if (isHitMouseCombo(nextLinkHotKey, e)) {
-        e.preventDefault();
-        invoke(Background.goForward);
-      }
-    });
+    getConfig()
+      .then(({ nextLinkHotKey }) => {
+        if (isHitMouseCombo(nextLinkHotKey, e)) {
+          e.preventDefault();
+          invoke(Background.goForward);
+        }
+      })
+      .catch();
   },
   { capture: true }
 );
@@ -51,16 +55,18 @@ window.addEventListener(
     const dom = e.target as HTMLElement;
     let urls = getCloseUrls(dom);
     if (urls.length == 0) return;
-    getConfig().then(({ limitOpenLinkCount }) => {
-      if (limitOpenLinkCount > 0) {
-        const url = dom.closest('a')?.href;
-        if (url) {
-          const offset = urls.includes(url) ? urls.indexOf(url) : 0;
-          urls = urls.splice(offset, limitOpenLinkCount);
+    getConfig()
+      .then(({ limitOpenLinkCount }) => {
+        if (limitOpenLinkCount > 0) {
+          const url = dom.closest('a')?.href;
+          if (url) {
+            const offset = urls.includes(url) ? urls.indexOf(url) : 0;
+            urls = urls.splice(offset, limitOpenLinkCount);
+          }
         }
-      }
-      invoke(Background.updateLinks, urls);
-    });
+        invoke(Background.updateLinks, urls);
+      })
+      .catch();
   },
   { passive: true, capture: true }
 );
