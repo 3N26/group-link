@@ -48,11 +48,16 @@ window.addEventListener(
 window.addEventListener(
   'contextmenu',
   (e) => {
-    const urls = getCloseUrls(e.target);
+    const dom = e.target as HTMLElement;
+    let urls = getCloseUrls(dom);
     if (urls.length == 0) return;
     getConfig().then(({ limitOpenLinkCount }) => {
       if (limitOpenLinkCount > 0) {
-        urls.splice(limitOpenLinkCount);
+        const url = dom.closest('a')?.href;
+        if (url) {
+          const offset = urls.includes(url) ? urls.indexOf(url) : 0;
+          urls = urls.splice(offset, limitOpenLinkCount);
+        }
       }
       invoke(Background.updateLinks, urls);
     });
