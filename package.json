@@ -1,8 +1,8 @@
 {
-  "name": "Group Link",
+  "name": "Group Links",
   "module": "src/index.ts",
   "type": "module",
-  "description": "group your links and visit by ",
+  "description": "Group similar links and navigate them in tab pool by shortcut",
   "version": "0.0.1",
   "scripts": {
     "watch:build": "bun ./scripts/watchBuild.ts",
